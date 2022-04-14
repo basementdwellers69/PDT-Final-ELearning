@@ -5,7 +5,9 @@ CREATE TABLE users (
     lastName VARCHAR (255),
     username VARCHAR(100) UNIQUE NOT NULL,
     email VARCHAR(100) UNIQUE NOT NULL,
-    password VARCHAR(255) NOT NULL
+    password VARCHAR(255) NOT NULL,
+    major_id INT,
+    CONSTRAINT fk_major FOREIGN KEY (major_id) REFERENCES major(id)
 );
 
 DROP TABLE IF EXISTS articles;
@@ -15,6 +17,12 @@ CREATE TABLE articles (
     body TEXT NOT NULL,
     user_id INT,
     CONSTRAINT fk_user FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+DROP TABLE IF EXIST major;
+CREATE TABLE major (
+    id SERIAL PRIMARY KEY,
+    major_name VARCHAR (255) NOT NULL
 );
 
 INSERT INTO users (username, name, password) VALUES ('admin', 'Administrator', 'admin');
