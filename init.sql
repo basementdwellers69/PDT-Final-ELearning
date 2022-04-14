@@ -19,7 +19,7 @@ CREATE TABLE articles (
     CONSTRAINT fk_user FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
-DROP TABLE IF EXIST major;
+DROP TABLE IF EXISTS major;
 CREATE TABLE major (
     id SERIAL PRIMARY KEY,
     major_name VARCHAR (255) NOT NULL
