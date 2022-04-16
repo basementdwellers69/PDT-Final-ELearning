@@ -25,4 +25,4 @@ CREATE TABLE major (
     major_name VARCHAR (255) NOT NULL
 );
 
-INSERT INTO users (username, name, password) VALUES ('admin', 'Administrator', 'admin');
+INSERT INTO major (major_name\) VALUES ('Information Technology'), ('Information System'), ('Visual Communication Design');
