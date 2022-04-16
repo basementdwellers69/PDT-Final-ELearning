@@ -43,3 +43,11 @@ def login():
         conn.close()
 
     return render_template('login.html')
+
+@app.route('/logout')
+def logout():
+    """ function to do logout """
+    session.clear()  # clear all sessions
+    return redirect(url_for('index'))
+
+
