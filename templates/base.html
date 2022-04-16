@@ -33,6 +33,25 @@
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-secondary" type="submit">Search</button>
                 </form>
+                <form class="d-flex ml-4">
+                    {% if session and session.get('username') %}
+                    <div class="dropdown">
+                      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <span style="text-decoration: none;">
+                          Hello, {{ session['username'] }}
+                        </span>
+                      </button>
+                      <ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item" href="{{ url_for('logout') }}">Log Out</a></li>
+                      </ul>
+                    </div>
+                    {% else %}
+                    {% block index %}
+                    {% endblock %}
+                    {% block signup %}
+                    {% endblock %}
+                    {% endif %}
+                </form>
             </div>
         </div>
     </nav>
