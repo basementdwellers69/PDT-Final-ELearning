@@ -22,7 +22,7 @@ def login():
         conn = db_connection()
         cur = conn.cursor()
         sql = """
-            SELECT id, email
+            SELECT id, email, username
             FROM users
             WHERE email = '%s' AND password = '%s'
         """ % (email, password)
@@ -35,7 +35,7 @@ def login():
         else:
             session.clear()
             session['user_id'] = user[0]
-            session['username'] = user[1]
+            session['username'] = user[2]
             return redirect(url_for('index'))
 
         flash(error)
