@@ -1,168 +1,115 @@
+<!-- Coding by CodingLab | www.codinglabweb.com -->
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!----======== Axios ======== -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+
+    <!----======== Bootstrap ======== -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    <!----======== Fontawsome icons CSS ======== -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!----======== CSS ======== -->
+    <link rel="stylesheet" href="static/base.css">
     {% block css %}
     {% endblock %}
-
-    <title>{% block title %}{% endblock %}</title>
-</head>
-
-<body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-        <div class="container-fluid">
-            <a class="navbar-brand" id="nav-title" href="{{ url_for('index') }}">PDT Blog</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                      <a class="nav-link active" aria-current="page" href="index.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#">Course</a>
-                    </li>
-                  </ul>
-                <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-secondary" type="submit">Search</button>
-                </form>
-                <form class="d-flex ml-4">
-                    {% if session and session.get('username') %}
-                    <div class="dropdown">
-                      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                        <span style="text-decoration: none;">
-                          Hello, {{ session['username'] }}
-                        </span>
-                      </button>
-                      <ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
-                        <li><a class="dropdown-item" href="{{ url_for('logout') }}">Log Out</a></li>
-                      </ul>
-                    </div>
-                    {% else %}
-                    {% block index %}
-                    {% endblock %}
-                    {% block signup %}
-                    {% endblock %}
-                    {% endif %}
-                </form>
-            </div>
-        </div>
-    </nav>
-    <div class="container">
-        {% block content %}
-        {% endblock %}
-    </div>
     
-    <!--footer-->
-    <footer class="text-center text-lg-start bg-dark text-muted">
-      <!-- Section: Social media -->
-      <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
-        <div class="me-5 d-none d-lg-block">
-          <span>Get connected with us on social networks:</span>
-        </div>
-        <!--Social media icon-->
-        <div>
-          <a href="https://www.facebook.com/president.university" class="me-4 text-reset">
-            <i class="fa fa-facebook-f"></i>
-          </a>
-          <a href="https://twitter.com/PRESUNIV" class="me-4 text-reset">
-            <i class="fa fa-twitter"></i>
-          </a>
-          <a href="https://search.yahoo.com/search;_ylt=AwrT4a78glliUo0AzgtXNyoA;_ylc=X1MDMjc2NjY3OQRfcgMyBGZyA21jYWZlZQRmcjIDc2ItdG9wBGdwcmlkA0F6THh6SjRpVDRPT2szbzRLOGtxWUEEbl9yc2x0AzAEbl9zdWdnAzEwBG9yaWdpbgNzZWFyY2gueWFob28uY29tBHBvcwMwBHBxc3RyAwRwcXN0cmwDMARxc3RybAMyMARxdWVyeQNwcmVzaWRlbnQlMjB1bml2ZXJzaXR5BHRfc3RtcAMxNjUwMDMzNDUx?p=president+university&fr2=sb-top&fr=mcafee&type=E211US885G0" class="me-4 text-reset">
-            <i class="fa fa-google"></i>
-          </a>
-          <a href="https://www.instagram.com/p/CZ313M2PjG1/" class="me-4 text-reset">
-            <i class="fa fa-instagram"></i>
-          </a>
-          <a href="https://mm.linkedin.com/school/president-university/" class="me-4 text-reset">
-            <i class="fa fa-linkedin"></i>
-          </a>
-        </div>
-      </section>
-      <!-- end Section: Social media -->
+    <!----===== Boxicons CSS ===== -->
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    
+    <title>E-Campus</title> 
+</head>
+<body>
+    <nav class="sidebar close">
+        <header>
+            <a href="{{ url_for('index') }}" style="text-decoration: none;">
+                <div class="image-text">
+                    <span class="image">
+                        <img src="static/images/logo.png" alt="">
+                    </span>
+    
+                    <div class="text logo-text">
+                            <span class="name">E-Campus</span>
+                    </div>
+                </div>
+            </a>
 
-      <!-- Section: Links  -->
-      <section class="">
-        <div class="container text-center text-md-start mt-5">
-          <div class="row mt-3">
-            <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-              <h6 class="text-uppercase fw-bold mb-4">
-                <i class="fa fa-gem me-3"></i>PDT Website
-              </h6>
-              <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
-                Similique assumenda provident mollitia magnam quasi suscipit! 
-              </p>
-            </div>
-            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-              <!-- Links -->
-              <h6 class="text-uppercase fw-bold mb-4">
-                Website
-              </h6>
-              <p>
-                <a href="https://president.ac.id/" class="text-reset">President University</a>
-              </p>
-              <p>
-                <a href="https://ecampus.president.ac.id/" class="text-reset">PresUniv E-Campus</a>
-              </p>
-              <p>
-                <a href="https://president.ac.id/" class="text-reset">Internship and Career Center (ICC)</a>
-              </p>
-              <p>
-                <a href="https://www.president.ac.id/pg/116-center-for-languange-and-culture" class="text-reset">Center for Language and Culture (CLC)</a>
-              </p>
-            </div>
-            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-              <!-- Links -->
-              <h6 class="text-uppercase fw-bold mb-4">
-                Links
-              </h6>
-              <p>
-                <a href="#!" class="text-reset">Home</a>
-              </p>
-              <p>
-                <a href="#!" class="text-reset">Course</a>
-              </p>
-              <p>
-                <a href="#!" class="text-reset">Contact</a>
-              </p>
-              <p>
-                <a href="#!" class="text-reset">About</a>
-              </p>
-            </div>
-            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-              <!-- Links -->
-              <h6 class="text-uppercase fw-bold mb-4">
-                Contact
-              </h6>
-              <p><i class="fa fa-home me-3"></i> Jl. Ki Hajar Dewantara, Kota Jababeka, Cikarang Baru, Bekasi 17550, Indonesia</p>
-              <p>
-                <i class="fa fa-envelope me-3"></i>
-                info@president.ac.id
-              </p>
-              <p><i class="fa fa-phone me-3"></i> +62-21 8910 9763</p>
-              <p><i class="fa fa-print me-3"></i> 112-115</p>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- end Section: Links  -->
+            <i class='bx bx-chevron-right toggle'></i>
+        </header>
 
-      <!-- Copyright -->
-      <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
-        © 2022 Copyright:
-        <a class="text-reset fw-bold" href="#">E-Campus</a>
-      </div>
-      <!-- end Copyright -->
-    </footer>
+        <div class="menu-bar">
+            <div class="menu">
+
+                <li class="search-box">
+                    <i class='bx bx-search icon'></i>
+                    <input type="text" placeholder="Search...">
+                </li>
+
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-home-alt icon' ></i>
+                            <span class="text nav-text">Dashboard</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-note icon'></i>
+                            <span class="text nav-text">Noteboard</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+
+            <div class="bottom-content">
+                <li class="">
+                    {% if session and session.get('username') %}
+                    <a href="{{ url_for('logout') }}">
+                        <i class='bx bx-log-out icon' ></i>
+                        <span class="text nav-text">Logout</span>
+                    </a>
+                    {% else %}
+                    <a href="{{ url_for('login') }}">
+                        <i class='bx bx-log-in icon' ></i>
+                        <span class="text nav-text">login</span>
+                    </a>
+                    {% endif %}
+                </li>
+
+                <li class="mode">
+                    <div class="sun-moon">
+                        <i class='bx bx-moon icon moon'></i>
+                        <i class='bx bx-sun icon sun'></i>
+                    </div>
+                    <span class="mode-text text">Dark mode</span>
+
+                    <div class="toggle-switch">
+                        <span class="switch"></span>
+                    </div>
+                </li>
+                
+            </div>
+        </div>
+
+    </nav>
+
+    <section class="home">
+        <div class="text">Dashboard</div>
+        {% block content %}
+        
+        {% endblock %}
+    </section>
+
+    <!----======== Javascript ======== -->
+    <script src="static/script.js"></script>
+
 </body>
-
 </html>
-
