@@ -14,7 +14,6 @@ CREATE TABLE users (
     email VARCHAR(100) UNIQUE NOT NULL,
     password VARCHAR(255) NOT NULL,
     major_id INT,
-    status VARCHAR(255) NOT NULL,
     CONSTRAINT fk_major FOREIGN KEY (major_id) REFERENCES major(id)
 );
 
