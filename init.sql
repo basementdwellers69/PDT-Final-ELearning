@@ -7,7 +7,7 @@ CREATE TABLE major (
 DROP TABLE IF EXISTS users;
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
-    status CHAR(20) NOT NULL UNIQUE KEY,
+    status INT NOT NULL,
     firstName VARCHAR(255) NOT NULL,
     lastName VARCHAR (255),
     username VARCHAR(100) UNIQUE NOT NULL,
