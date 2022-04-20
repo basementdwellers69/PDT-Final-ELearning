@@ -23,6 +23,9 @@
     <!----===== Boxicons CSS ===== -->
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
     
+    <title>{% block title %}{% endblock %}</title> 
+    <link rel = "icon" href ="static/images/logo.png" type = "image/x-icon">
+    
     <title>E-Campus</title> 
 </head>
 <body>
@@ -52,6 +55,15 @@
                 </li>
 
                 <ul class="menu-links">
+                    {% if session and session.get('username') %}
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class="bx bx-user icon" ></i>
+                            <span class="text nav-text">{{ session['username'] }}</span>
+                        </a>
+                    </li>
+                    {% endif %}
+                    
                     <li class="nav-link">
                         <a href="#">
                             <i class='bx bx-home-alt icon' ></i>
