@@ -6,7 +6,6 @@
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
-
 :root{
     /* ===== Colors ===== */
     --body-color: #E4E9F7;
@@ -171,7 +170,10 @@ body.dark .sidebar .name{
 .sidebar .menu{
     margin-top: 40px;
 }
-
+.sidebar .menu-links, .sidebar .menu-links li{
+    margin-left: 0;
+    padding-left: 0;
+}
 .sidebar li.search-box{
     border-radius: 6px;
     background-color: var(--primary-color-light);
@@ -288,6 +290,7 @@ body.dark .switch::before{
     left: 20px;
 }
 
+/* ===== Content ===== */
 .home{
     position: absolute;
     top: 0;
@@ -348,4 +351,12 @@ body.dark .home .concor .content-noteboard{
 
 .home .concor a{
     text-decoration: none;
+}
+
+.home .concor .content-course{
+    border-radius: 10px;
+}
+
+.home .concor .content-noteboard{
+    border-radius: 10px;
 }
