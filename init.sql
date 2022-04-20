@@ -26,7 +26,7 @@ CREATE TABLE articles (
     CONSTRAINT fk_user FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
+INSERT INTO major (major_name) VALUES ('Information Technology'), ('Information System'), ('Visual Communication Design');
+
 INSERT INTO users (id, status, firstName, lastName, username, email, password, major_id)
 VALUES ('');
-
-INSERT INTO major (major_name) VALUES ('Information Technology'), ('Information System'), ('Visual Communication Design');
