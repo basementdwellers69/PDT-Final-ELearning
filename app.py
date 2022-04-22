@@ -100,4 +100,8 @@ def create():
         return jsonify({'status': 500, 'message': 'No Data submitted'})
 
     return render_template('create.html')
+
+@app.route('/profile')
+def profile():
+    return render_template('profile.html')
  
