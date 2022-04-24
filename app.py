@@ -8,6 +8,7 @@ from models.major import major_model
 from controllers.crud import crud_controller
 from views.index import construct_index_bp
 from views.login import construct_login_bp
+from views.profile import construct_profile_bp
 
 #init models
 user = user_model(db_session, metadata)
@@ -22,11 +23,13 @@ major_control = crud_controller(conn, major)
 
 index = construct_index_bp(user_control)
 login = construct_login_bp(user_control)
+profile = construct_profile_bp(user_control)
 
 app = Flask(__name__,static_url_path='', static_folder='views/static',template_folder='views/templates')
 app.secret_key = 'super secret key'
 app.register_blueprint(index)
 app.register_blueprint(login)
+app.register_blueprint(profile)
 
 # @app.route('/')
 # def index():

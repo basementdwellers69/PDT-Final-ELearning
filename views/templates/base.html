@@ -57,9 +57,9 @@
                 </li>
 
                 <ul class="menu-links">
-                    {% if session and session.get('username') %}
+                    {% if session %}
                     <li class="nav-link">
-                        <a href="#">
+                        <a href="{{ url_for('profile.profile') }}">
                             <i class="bx bx-user icon"></i>
                             <span class="text nav-text">{{ session['username'] }}</span>
                         </a>
@@ -92,8 +92,8 @@
 
             <div class="bottom-content">
                 <li class="">
-                    {% if session and session.get('username') %}
-                    <a href="#">
+                    {% if session %}
+                    <a href="{{ url_for('login.logout') }}">
                         <i class='bx bx-log-out icon'></i>
                         <span class="text nav-text">Logout</span>
                     </a>

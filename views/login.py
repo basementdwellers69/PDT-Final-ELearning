@@ -18,6 +18,7 @@ def construct_login_bp(controller):
             else:
                 session.clear()
                 session['user_id'] = user["id"]
+                session['username'] = user["firstName"] +" "+ user["lastName"]
                 session['user_status'] = user["status"]
                 session['user_major'] = user["majorId"]
                 return redirect(url_for('index.index'))

@@ -6,7 +6,7 @@ def construct_index_bp(controller):
 
     @index_bp.route("/")
     def index():
-        print(controller.get("id=1"), file=sys.stdout) 
+        # print(controller.get("id=1"), file=sys.stdout) 
         # insObj = {"status":0,
         #     "firstName":'admin',
         #     "lastName":'admin',
