@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request
+from flask import Flask, redirect, jsonify, render_template, url_for, session, request, flash, Blueprint
 import sys
 
 def construct_login_bp(controller):
@@ -9,21 +9,27 @@ def construct_login_bp(controller):
         if request.method == 'POST':
             email = request.form['email']
             password = request.form['password']
-            query = "email='%a' and password='%b'" % (email, password)
-            user = controller.get(query)
-            if user.count() != 0:
+            query = "email='%s' and password='%s'" % (email, password)
+            stmp = controller.get(query)
+            user = stmp.fetchone()
+            print(user, file=sys.stdout)
+            if user is None:
                 error = 'Wrong credentials. No user found'
             else:
                 session.clear()
-                session['user_id'] = user[0]
-                session['username'] = user[2]
+                session['user_id'] = user["id"]
+                session['user_status'] = user["status"]
+                session['user_major'] = user["majorId"]
                 return redirect(url_for('index.index'))
 
             flash(error)
-            cur.close()
-            conn.close()
 
         return render_template('login/login.html')
+
+    @login_bp.route('/logout')
+    def logout():
+        session.clear()  # clear all sessions
+        return redirect(url_for('index.index'))
         
     
     return login_bp

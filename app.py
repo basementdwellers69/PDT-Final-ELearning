@@ -24,6 +24,7 @@ index = construct_index_bp(user_control)
 login = construct_login_bp(user_control)
 
 app = Flask(__name__,static_url_path='', static_folder='views/static',template_folder='views/templates')
+app.secret_key = 'super secret key'
 app.register_blueprint(index)
 app.register_blueprint(login)
 
