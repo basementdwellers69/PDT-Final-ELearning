@@ -6,10 +6,21 @@ def construct_profile_bp(controller):
 
     @profile_bp.route("/profile")
     def profile():
-        query = "SELECT users.id, users.status, users.firstName, users.lastName, users.email, majors.majorName FROM `users` INNER JOIN majors ON majors.id=users.majorId;"
-        stmp = controller.raw(query)
-        stmp.fetchall()
-        return render_template('profile/profile.html')
+        user_id = session.get('user_id')
+        query = "id = %s" % (user_id)
+        stmp = controller.get(query)
+        profile = stmp.fetchone()
+        print(profile, file=sys.stdout)
+        
+        session['username'] = profile['username']
+        session['firstname'] = profile['firstName']
+        session['lastname'] = profile['lastName']
+        session['email'] = profile['email']
+        session['address'] = profile['address']
+        session['city'] = profile['city']
+        session['country'] = profile['country']
+        session['postal'] = profile['postalCode']
+        session['about'] = profile['aboutMe']
 
-    
+        return render_template('profile/profile.html')
     return profile_bp

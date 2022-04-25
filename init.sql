@@ -41,5 +41,5 @@ USE `pdt`;
 
 -- INSERT INTO major (major_name) VALUES ('Information Technology'), ('Information System'), ('Visual Communication Design');
 
--- INSERT INTO users (id, status, firstName, lastName, username, email, password, major_id)
+-- INSERT INTO users (status, firstName, lastName, username, email, password, major_id, address, city, country, postalCode, aboutMe)
 -- VALUES ('');
