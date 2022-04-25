@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block css%}
+{% endblock %}
+
+{% block title %}
+Course
+{% endblock%}
+
+{% block text %}
+Course
+{% endblock %}
+
+{% block content %}
+<div class="container" style="padding: 0;">
+    <div class="row" style="background-color: white; margin-bottom: 20px; border-radius: 10px; padding: 20px 10px;">
+        <div class="course-header-title" style="margin-bottom: 20px;">
+            <h3>Pyschology and Design Thinking</h3>
+        </div>
+        <div class="course-header-body">
+            <div class="row" style="padding: 5px;">
+                <span class="col-2">Time: </span>
+                <div class="col-6">
+                    <span>10:30 - 12:30</span>
+                </div>
+            </div>
+            <div class="row" style="padding: 5px;">
+                <span class="col-2">Class: </span>
+                <div class="col-6">
+                    <span>321B</span>
+                </div>
+            </div>
+            <div class="row" style="padding: 5px;">
+                <span class="col-2">Link: </span>
+                <div class="col-6">
+                    <a href="#">Link meeting</a>
+                </div>
+            </div>
+            <div class="row">
+                <a href="#">
+                    <div class="teacher" style="padding: 5px; padding-right: 20px; float: right;">
+                        <span style="margin-right: 10px;">Teacher</span>
+                        <i class="bx bx-user icon" style="border: 2px solid grey; border-radius: 50%;" ></i>
+                    </div>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="row" style="background-color: white; border-radius: 10px; padding: 20px 10px;">
+        <div class="course-content">
+            <div class="noteboard-header h4">
+                Week1
+            </div>
+            <hr>
+            <div class="noteboard-content" style="background-color: white;">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
