@@ -23,6 +23,11 @@ USE `pdt`;
 --     password VARCHAR(255) NOT NULL,
 --     major_id INT,
 --     CONSTRAINT fk_major FOREIGN KEY (major_id) REFERENCES major(id)
+--     address VARCHAR (300),
+--     city VARCHAR (250),
+--     country VARCHAR (250),
+--     postalCode INT,
+--     aboutMe TEXT
 -- );
 
 -- DROP TABLE IF EXISTS articles;
