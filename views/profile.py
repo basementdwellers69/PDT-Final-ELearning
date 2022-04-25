@@ -12,7 +12,7 @@ def construct_profile_bp(controller):
         profile = stmp.fetchone()
         print(profile, file=sys.stdout)
         
-        session['username'] = profile['username']
+        session['username2'] = profile['username']
         session['firstname'] = profile['firstName']
         session['lastname'] = profile['lastName']
         session['email'] = profile['email']

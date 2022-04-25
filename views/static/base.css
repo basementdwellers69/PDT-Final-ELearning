@@ -65,6 +65,7 @@ body.dark{
     display: flex;
     align-items: center;
     margin-top: 10px;
+    padding: 0;
 }
 
 .sidebar header .image,
