@@ -10,7 +10,6 @@ def construct_course_bp(user, clas, content, enroll):
             return redirect(url_for('index.index'))
 
         courseData = clas.get("id='%s'" % (id)).fetchone()
-        print(courseData)
         if not courseData :
             res = "Course Data is not Found"
         else :
@@ -34,7 +33,7 @@ def construct_course_bp(user, clas, content, enroll):
         else :
             res += "Enrolled Student : " + str(["<br>"+str({k:v for (k,v) in x.items()})+"<br>" for x in enrollList]) + "<br>"
 
-        return(res)
+        return render_template('course/course.html', cData=courseData, lecturer=lecturerData, content=courseContent)
 
     
     return course_bp

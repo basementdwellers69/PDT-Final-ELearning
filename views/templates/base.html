@@ -17,7 +17,7 @@
     <!----======== Fontawsome icons CSS ======== -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!----======== CSS ======== -->
-    <link rel="stylesheet" href="static/base.css">
+    <link rel="stylesheet" href="{{url_for('static', filename='base.css')}}">
     {% block css %}
     {% endblock %}
 
@@ -25,7 +25,7 @@
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
 
     <title>{% block title %}{% endblock %}</title>
-    <link rel="icon" href="static/images/logo.png" type="image/x-icon">
+    <link rel="icon" href="{{url_for('static', filename='images/logo.png')}}" type="image/x-icon">
 
     <title>E-Campus</title>
 </head>
@@ -36,7 +36,7 @@
             <a href="{{ url_for('index.index') }}" style="text-decoration: none;">
                 <div class="image-text">
                     <span class="image">
-                        <img src="static/images/logo.png" alt="">
+                        <img src="{{url_for('static', filename='images/logo.png')}}" alt="">
                     </span>
 
                     <div class="text logo-text">
@@ -123,14 +123,18 @@
     </nav>
 
     <section class="home">
-        <div class="text">Dashboard</div>
+        <div class="text">
+            {% block contentTitle %}
+
+            {% endblock %}
+        </div>
         {% block content %}
 
         {% endblock %}
     </section>
 
     <!----======== Javascript ======== -->
-    <script src="static/script.js"></script>
+    <script src="{{url_for('static', filename='script.js')}}"></script>
 
 </body>
 
