@@ -5,31 +5,40 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from database.db import engine, metadata, db_session, init_db
 from models.user import user_model
 from models.major import major_model
+from models.classes import class_model, class_content_model, class_enroll_model
 from controllers.crud import crud_controller
 from views.index import construct_index_bp
 from views.login import construct_login_bp
 from views.profile import construct_profile_bp
-
+from views.classes import construct_classes_bp
 #init models
 user = user_model(db_session, metadata)
 major = major_model(db_session, metadata)
+classes =  class_model(db_session, metadata)
+class_content = class_content_model(db_session, metadata)
+class_enroll = class_enroll_model(db_session, metadata)
 
 #init database
 init_db()
 conn = engine.connect()
 
 user_control = crud_controller(conn, user) 
-major_control = crud_controller(conn, major) 
+major_control = crud_controller(conn, major)
+classes_control = crud_controller(conn, classes) 
+class_content_control = crud_controller(conn, class_content)
+class_enroll_control = crud_controller(conn, class_enroll)
 
 index = construct_index_bp(user_control)
 login = construct_login_bp(user_control)
 profile = construct_profile_bp(user_control)
+classes = construct_classes_bp(user_control, classes_control, class_content_control, class_enroll_control)
 
 app = Flask(__name__,static_url_path='', static_folder='views/static',template_folder='views/templates')
 app.secret_key = 'super secret key'
 app.register_blueprint(index)
 app.register_blueprint(login)
 app.register_blueprint(profile)
+app.register_blueprint(classes)
 
 # @app.route('/')
 # def index():
