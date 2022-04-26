@@ -13,6 +13,8 @@ from views.profile import construct_profile_bp
 from views.course import construct_course_bp
 from views.student import construct_student_bp
 from views.studentinput import construct_studentinput_bp
+from views.creatematerial import construct_creatematerial_bp
+from views.inputcourse import construct_inputcourse_bp
 #init models
 user = user_model(db_session, metadata)
 major = major_model(db_session, metadata)
@@ -36,6 +38,8 @@ profile = construct_profile_bp(user_control)
 course = construct_course_bp(user_control, course_control, course_content_control, course_enroll_control)
 student = construct_student_bp(user_control)
 studentinput = construct_studentinput_bp(user_control)
+creatematerial = construct_creatematerial_bp(course_content_control)
+inputcourse = construct_inputcourse_bp(course_control)
 
 app = Flask(__name__,static_url_path='', static_folder='views/static',template_folder='views/templates')
 app.secret_key = 'super secret key'
@@ -45,6 +49,9 @@ app.register_blueprint(profile)
 app.register_blueprint(course)
 app.register_blueprint(student)
 app.register_blueprint(studentinput)
+app.register_blueprint(creatematerial)
+app.register_blueprint(inputcourse)
+
 
 # @app.route('/')
 # def index():

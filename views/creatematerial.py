@@ -4,7 +4,7 @@ import sys
 def construct_creatematerial_bp(controller):
     creatematerial_bp = Blueprint('creatematerial', __name__,static_folder='static',template_folder='templates')
 
-    @creatematerial_bp.route("course/<id>/creatematerial", methods = ['GET','POST'])
+    @creatematerial_bp.route("/course/<id>/creatematerial", methods = ['GET','POST'])
     def creatematerial():
 
             # if request.method == 'POST':
