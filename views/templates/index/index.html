@@ -22,17 +22,17 @@ Dashboard
         <!--COURSE CONTENT-->
         <div class="course-content" style="max-height: 400px; border: 1px solid #ddd; display: flex; overflow-x: auto; padding: 30px;">
             <a href="course/1">
-                <div class="card" style="width: 18rem; ">
-                    <img src="{{url_for('static', filename='images/cb1.png')}}" class="card-img-top" alt="..." style="max-height: 10rem;">
+                <div class="card" style="width: 400px ">
+                    <img src="{{url_for('static', filename='images/cb1.png')}}" class="card-img-top" alt="..." style="height: 200px">
                     <div class="card-body">
                         <h5 class="card-text">Psychology and Design Thinking</h5>
                     </div>
                 </div>
             </a>
             <a href="course/2">
-                <div class="card" style="width: 18rem;">
+                <div class="card" style="width: 400px">
                     <!-- <div class="pic"> -->
-                    <img src="{{url_for('static', filename='images/cb2.png')}}" class="card-img-top" alt="..." style="max-height: 10rem;">
+                    <img src="{{url_for('static', filename='images/cb2.png')}}" class="card-img-top" alt="..." style="height: 200px">
                     <!-- </div> -->
                     <div class="card-body">
                         <h5 class="card-text">Coding and Big Data</h5>
@@ -40,24 +40,24 @@ Dashboard
                 </div>
             </a>
             <a href="course/3">
-                <div class="card" style="width: 18rem;">
-                    <img src="{{url_for('static', filename='images/cb3.jpg')}}" class="card-img-top" alt="..." style="max-height: 10rem;">
+                <div class="card" style="width: 400px">
+                    <img src="{{url_for('static', filename='images/cb3.jpg')}}" class="card-img-top" alt="..." style="height: 200px">
                     <div class="card-body">
                         <h5 class="card-text">Database System</h5>
                     </div>
                 </div>
             </a>
             <a href="course/4">
-                <div class="card" style="width: 18rem;">
-                    <img src="{{url_for('static', filename='images/cb4.jpg')}}" class="card-img-top" alt="..." style="max-height: 10rem;">
+                <div class="card" style="width: 400px">
+                    <img src="{{url_for('static', filename='images/cb4.jpg')}}" class="card-img-top" alt="..." style="height: 200px">
                     <div class="card-body">
                         <h5 class="card-text">Integrative Survival Experience</h5>
                     </div>
                 </div>
             </a>
             <a href="course/5">
-                <div class="card" style="width: 18rem;">
-                    <img src="{{url_for('static', filename='images/b5.jpg')}}" class="card-img-top" alt="..." style="max-height: 10rem;">
+                <div class="card" style="width: 400px">
+                    <img src="{{url_for('static', filename='images/b5.jpg')}}" class="card-img-top" alt="..." style="height: 200px">
                     <div class="card-body">
                         <h5 class="card-text">Object Oriented and Visual Programming</h5>
                     </div>
@@ -68,18 +68,30 @@ Dashboard
 
     <!--NOTEBOARD-->
     <div class="content-noteboard" style="padding: 20px 10px; margin: 20px 0;">
-        <div class="noteboard-header h2">
-            Noteboard
+        <div class="row">
+            <div class="col noteboard-header h2" id="noteboard">
+                Noteboard
+            </div>
+            {% if session and session.get('user_id') == 1 %}
+            <div class="col">
+                <a href="#" class="btn btn-primary" style="text-decoration: none; float: right;">Add Note</a>
+            </div>
+            {% endif %}
         </div>
+
         <hr>
-        <div class="noteboard-content" style="background-color: white;">
+        <div class="noteboard-content">
+            {% if articles %}
             <ul class="list-group list-group-flush">
-                <li class="list-group-item"></li>
-                <li class="list-group-item"></li>
-                <li class="list-group-item"></li>
-                <li class="list-group-item"></li>
-                <li class="list-group-item"></li>
+                {% for (article_id, title, body, user_id) in articles %}
+                <li class="list-group-item">
+                    <a href="{{ body }}">{{ title }}</a>
+                </li>
+                {% endfor %}
             </ul>
+            {% else %}
+            <h5>No Contents</h5>
+            {% endif %}
         </div>
     </div>
     <!--END NOTEBOARD-->
@@ -107,5 +119,33 @@ Dashboard
         background-color: #ddd;
         margin: 0 10px;
     }
+    .create-course a{
+        background-color: var(--primary-color);
+    }
+    .create-course a:hover{
+        background-color: #5646ff;
+    }
+    .content-noteboard a{
+        background-color: var(--primary-color);
+    }
+    .content-noteboard a:hover{
+        background-color: #5646ff;
+    }
+    body.dark .home .create-course a{
+        border: 1px solid white;
+    }
+    body.dark .home .create-course a:hover{
+        background-color: #262627;
+    }
+    body.dark .home .content-noteboard a{
+        border: 1px solid white;
+    }
+    body.dark .home .content-noteboard a:hover{
+        background-color: #262627;
+    }
+    .content-noteboard {
+        background-color: white;
+    }
+
 </style>
 {% endblock %}
