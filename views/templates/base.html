@@ -88,7 +88,7 @@
                     </li>
                     {% if session and session['user_status'] == 2 %}
                     <li class="nav-link">
-                        <a href="#">
+                        <a href="{{ url_for('student.student') }}">
                             <i class='bx bxs-user-badge icon'></i>
                             <span class="text nav-text">Students</span>
                         </a>

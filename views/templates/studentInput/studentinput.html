@@ -1,0 +1,224 @@
+{% extends './base.html' %}
+
+{% block title %}
+Profile
+{% endblock %}
+
+{% block text %}
+Profile
+{% endblock %}
+
+{% block content %}
+<form>
+    <div class="col-11 container-fluid mt--7 con-content" style="padding: 30px 0; border-radius: 10px;">
+        <div class="row container-fluid justify-content-center">
+            <div style="margin-left: 10px;">
+            <form action="/stdinput" method="POST">
+                <div class="container-student">
+                    <div class="row">
+                        <h3>Register Form</h3>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="header">
+                            <h5 class="heading-small text-muted mb-4">Personal Information</h5>
+                        </div>
+                        <div class="row">
+                            <div class="col-3">
+                                <label for="firstName">First Name</label>
+                            </div>
+                            <div class="col-8">
+                                <input type="text" id="firstname" name="firstname" class="form-control" placeholder="First Name">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3">
+                                <label for="lastName">Last Name</label>
+                            </div>
+                            <div class="col-8">
+                                <input type="text" id="lastname" name="lastname" class="form-control" placeholder="Last Name">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3">
+                                <label for="address">Address</label>
+                            </div>
+                            <div class="col-8">
+                                <input type="text" id="address" name="address" class="form-control" placeholder="Address">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3">
+                                <label for="country">Country</label>
+                            </div>
+                            <div class="col-8">
+                                <input type="text" id="country" name="country" class="form-control" placeholder="Country">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3">
+                                <label for="city">City</label>
+                            </div>
+                            <div class="col-8">
+                                <input type="text" id="city" name="city" class="form-control" placeholder="City">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3">
+                                <label for="postalCode">Postal Code</label>
+                            </div>
+                            <div class="col-8">
+                                <input type="text" id="postalCode" name="postalCode" class="form-control" placeholder="Postal Code">
+                            </div>
+                        </div>
+
+                        <div class="header2">
+                            <h5 class="heading-small text-muted mb-4">Account Information</h5>
+                        </div>
+                        <div class="row">
+                            <div class="col-3">
+                                <label for="username">Username</label>
+                            </div>
+                            <div class="col-8">
+                                <input type="text" id="username" name="username" class="form-control" placeholder="Username">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3">
+                                <label for="email">Email Address</label>
+                            </div>
+                            <div class="col-8">
+                                <input type="text" id="email" name="email" class="form-control" placeholder="Email Address">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3">
+                                <label for="password">Password</label>
+                            </div>
+                            <div class="col-8">
+                                <input type="text" id="password" name="password" class="form-control" placeholder="Password">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3">
+                                <label for="status">Status</label>
+                            </div>
+                            <div class="col-8">
+                                <select name="status" id="status" class="form-select" disabled>
+                                    <option value="3">Student</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3">
+                                <label for="major">Major</label>
+                            </div>
+                            <div class="col-8">
+                                <select name="major" id="major" class="form-select">
+                                    <option value="1">Information Technology</option>
+                                    <option value="2">Information System</option>
+                                    <option value="3">Visual Communication Design</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-11">
+                            <input type="submit" id="reg-submit" name="reg-submit" value="Save" class="btn btn-primary">
+                        </div>
+                    </div>
+                    
+                </div>
+            </form>
+            </div>
+            
+        </div>
+    </div>
+</form>
+<style>
+    :root {
+        /* ===== Colors ===== */
+        --body-color: #E4E9F7;
+        --sidebar-color: #FFF;
+        --primary-color: #695CFE;
+        --primary-color-light: #F6F5FF;
+        --toggle-color: #DDD;
+        --text-color: #707070;
+
+        /* ====== Transition ====== */
+        --tran-03: all 0.2s ease;
+        --tran-03: all 0.3s ease;
+        --tran-04: all 0.3s ease;
+        --tran-05: all 0.3s ease;
+    }
+
+    body.dark {
+        --body-color: #18191a;
+        --sidebar-color: #242526;
+        --primary-color: #3a3b3c;
+        --primary-color-light: #3a3b3c;
+        --toggle-color: #fff;
+        --text-color: #ccc;
+    }
+
+    .home .con-content {
+        background-color: var(--sidebar-color);
+        color: var(--text-color);
+    }
+
+    .home .con-content .user-content {
+        border: none;
+    }
+
+    .home .con-content .card-header {
+        background-color: #fff;
+
+    }
+
+    .home .con-content .user-content .pic {
+        border: none;
+    }
+
+    body.dark .home .con-content {
+        background-color: var(--sidebar-color);
+    }
+
+    body.dark .home .user-content {
+        background-color: var(--sidebar-color);
+        border: 2px solid #FFF;
+        border-radius: 10px;
+    }
+
+    body.dark .home .con-content .user-content .pic {
+        background-color: var(--sidebar-color);
+    }
+
+    body.dark .home .user-content input {
+        background-color: var(--sidebar-color);
+        border: 2px solid #FFF;
+    }
+
+    body.dark .home .user-content textarea {
+        background-color: var(--sidebar-color);
+        border: 2px solid #FFF;
+        color: var(--text-color);
+    }
+
+    body.dark .home .user-content .card-header {
+        background-color: var(--sidebar-color);
+        border-bottom: 1px solid var(--text-color);
+    }
+    .container-student .row{
+        padding: 10px;
+    }
+    div .header2 {
+        margin-top: 20px;
+        padding-top: 10px;
+    }
+    #reg-submit{
+        float: right;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        margin-right: 20px;
+    }
+
+</style>
+{% endblock %}
