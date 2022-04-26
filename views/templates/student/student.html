@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block css %}
+
+{% endblock %}
+
+{% block title %}
+Students
+{% endblock %}
+
+{% block text %}
+Students
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="container" style="background-color: white; border-radius: 10px;">
+        <div class="row student-header" style="padding-top: 20px; padding-bottom: 10px;">
+            <h4>Student Information</h4>
+            <label for="dropdown">Class:</label>
+            <div class="col-11">
+                <select class="form-select mb-3">
+                    <option>All</option>
+                    <option value="">Psychology and Design Thinking</option>
+                    <option value="">Database System</option>
+                    <option value="">Coding and Big Data</option>
+                </select>
+            </div>
+            
+            <!--
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+                Courses
+                </button>
+                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+                  <li><a class="dropdown-item active" href="#">Psychology and Design Thinking</a></li>
+                  <li><a class="dropdown-item" href="#">Database System</a></li>
+                  <li><a class="dropdown-item" href="#">Coding and Big Data</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Separated link</a></li>
+                </ul>
+            </div>
+            -->
+            
+        </div>
+        <hr>
+        
+        <div class="row student-table" style="padding: 10px 10px;">
+            {% if student %}
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Student Id</th>
+                        <th>Student Name</th>
+                        <th>Email Address</th>
+                        <th>Major</th>
+                        <th>Course Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for ( id, firstname, lastname, email, major_name) in studentList %}
+                        <tr>
+                                <td class="id"> {{ id }} </td>
+                                <td class="name"><a href=" {{ url_for('profile')}} " style="text-decoration: none; color: black;">{{ firstname }} {{ lastname}}</a> </td>
+                                <td class="email">{{ email }}</td>
+                                <td class="major">{{ major_name }}</td>
+                                <td class="course">Psychology and Design Thinking</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <h1>No Student Found</h1>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<style>
+    .name:hover{
+        text-decoration: underline;
+    }
+</style>
+{% endblock %}
