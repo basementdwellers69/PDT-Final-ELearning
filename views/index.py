@@ -14,9 +14,7 @@ def construct_index_bp(controller):
         #     "password":'admin',
         #     "major":1}
         # print(controller.insert(insObj), file=sys.stdout)
-        return render_template('index/index.html')
 
-    def noteboard():
         articles = controller.raw("SELECT art.id, art.title, art.body, art.user_id FROM articles art ORDER BY art.title").fetchall()
 
         return render_template('index/index.html', articles=articles)

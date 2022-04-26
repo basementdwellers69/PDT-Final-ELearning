@@ -72,9 +72,9 @@ Dashboard
             <div class="col noteboard-header h2" id="noteboard">
                 Noteboard
             </div>
-            {% if session and session.get('user_id') == 1 %}
+            {% if session and session['user_status'] == 2 %}
             <div class="col">
-                <a href="#" class="btn btn-primary" style="text-decoration: none; float: right;">Add Note</a>
+                <a href="{{ url_for('createnote.createnote') }}" class="btn btn-primary" style="text-decoration: none; float: right;">Add Note</a>
             </div>
             {% endif %}
         </div>
@@ -125,10 +125,10 @@ Dashboard
     .create-course a:hover{
         background-color: #5646ff;
     }
-    .content-noteboard a{
+    .content-noteboard .col a{
         background-color: var(--primary-color);
     }
-    .content-noteboard a:hover{
+    .content-noteboard .col a:hover{
         background-color: #5646ff;
     }
     body.dark .home .create-course a{
