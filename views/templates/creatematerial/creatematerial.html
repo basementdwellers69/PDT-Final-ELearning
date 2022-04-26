@@ -1,0 +1,61 @@
+{% extends './base.html' %}
+{% block css %}
+{% endblock %}
+
+{% block title %}
+Create Course Material
+{% endblock %}
+
+<form action="" method="POST">
+	<div class="container-fluid" style="background-color: white;, padding: 30px;">
+		<div class="row" style="background-color: white; margin-bottom: 20px; border-radius: 10px; padding: 20px 10px;">
+
+		</div>
+
+			<div class="form-group">
+
+				<label for="Id" class="form-control-label">Id</label>
+				<input type="text" name="Id" id="Id" class="form-control form-control-alternative" placeholder="Id" value="#" disabled>
+			</div>
+		    <div class="form-group">
+
+		    	<label for="courseId" class="form-control-label">Course ID</label>
+		    	<input type="text" name="courseId" id="courseId" class="form-control form-control-alternative" placeholder="Course ID" value="#" disabled>
+		    </div>
+
+		    <div class="form-group">
+
+		    	<label for="type" class="form-control-label">Type</label>
+		    	<input type="text" name="type" id="type" class="form-control form-control-alternative" placeholder="Type" value="#">
+		    </div>
+
+		    <div class="form-group">
+		    	<label for="contentTitle" class="form-control-label">Content Title</label>
+		    	<input type="text" name="contentTitle" id="contentTitle" class="form-control form-control-alternative" placeholder="Content Title" value="#">
+		    </div>
+
+		    <div class="form-group">
+		    	<label for="contentBody" class="form-control-label">Content Body</label>
+		    	<textarea rows="4" class="form-control form-control-alternative" placeholder="Insert course description..."></textarea>
+		    </div>
+
+		    <div class="form-group">
+		    	<label for="create_time" class="form-control-label">Time</label>
+		    	<input type="text" name="create_time" id="create_time" class="form-control form-control-alternative" placeholder="Create Time" value="#">
+		    </div>
+
+		    <div class="form-group">
+		    	<label for="status" class="form-control-label">Status</label>
+		    	<input type="text" name="status" id="status" class="form-control form-control-alternative" placeholder="Status" value="#" disabled>
+		    </div>
+
+		    <div class="row">
+		    <div class="offset-2 col-6">
+		        <button style="float: right;" type="button" class="btn btn-success" name="btnCreateContent" id="btnCreateContent" onclick="#CREATE">Create</button>
+		    </div>
+		    </div>
+			</div>
+</form>
+
+{% block content %}
+
