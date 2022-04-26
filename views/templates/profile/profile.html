@@ -20,7 +20,7 @@ Profile
                         </div>
                         <div class="card-body desc row" style="text-align: center; padding: 10px;">
                             <h4>{{ session['username'] }}</h4>
-                            <span>Information Technology</span>
+                            <span>{{ session['major']}}</span>
                         </div>
                     </div>
                     <hr>
@@ -36,9 +36,7 @@ Profile
                             <div class="col-8">
                                 <h3 class="mb-0">My Account</h3>
                             </div>
-                            <div class="col-4 text-right">
-                                <a href="#" class="btn btn-sm btn-primary" style="float: right;">Edit</a>
-                            </div>
+                            
                         </div>
                     </div>
                     <div class="card-body">
@@ -63,13 +61,13 @@ Profile
                                     <div class="col-lg-6">
                                         <div class="form-group focused">
                                             <label class="form-control-label" for="input-first-name">First name</label>
-                                            <input type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="First name" value="{{ session['firstname'] }}">
+                                            <input type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="First name" value="{{ session['firstname'] }}" disabled>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group focused">
                                             <label class="form-control-label" for="input-last-name">Last name</label>
-                                            <input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="Last name" value="{{ session['lastname'] }}">
+                                            <input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="Last name" value="{{ session['lastname'] }}" disabled>
                                         </div>
                                     </div>
                                 </div>
@@ -83,7 +81,7 @@ Profile
                                     <div class="col-md-12">
                                         <div class="form-group focused">
                                             <label class="form-control-label" for="input-address">Address</label>
-                                            <input id="input-address" class="form-control form-control-alternative" placeholder="Home Address" value="{{ session['address'] }}" type="text">
+                                            <input id="input-address" class="form-control form-control-alternative" placeholder="Home Address" value="{{ session['address'] }}" type="text" disabled>
                                         </div>
                                     </div>
                                 </div>
@@ -91,19 +89,19 @@ Profile
                                     <div class="col-lg-4">
                                         <div class="form-group focused">
                                             <label class="form-control-label" for="input-city">City</label>
-                                            <input type="text" id="input-city" class="form-control form-control-alternative" placeholder="City" value="{{ session['city'] }}">
+                                            <input type="text" id="input-city" class="form-control form-control-alternative" placeholder="City" value="{{ session['city'] }}" disabled>
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group focused">
                                             <label class="form-control-label" for="input-country">Country</label>
-                                            <input type="text" id="input-country" class="form-control form-control-alternative" placeholder="Country" value="{{ session['country'] }}">
+                                            <input type="text" id="input-country" class="form-control form-control-alternative" placeholder="Country" value="{{ session['country'] }}" disabled>
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label class="form-control-label" for="input-country">Postal code</label>
-                                            <input type="number" id="input-postal-code" class="form-control form-control-alternative" placeholder="Postal code" value="{{ session['postal'] }}">
+                                            <input type="number" id="input-postal-code" class="form-control form-control-alternative" placeholder="Postal code" value="{{ session['postal'] }}" disabled>
                                         </div>
                                     </div>
                                 </div>
@@ -115,7 +113,7 @@ Profile
                             <div class="pl-lg-4">
                                 <div class="form-group focused">
                                     <label>About Me</label>
-                                    <textarea rows="4" class="form-control form-control-alternative" placeholder="A few words about you ...">{{ session['about'] }}</textarea>
+                                    <textarea rows="4" class="form-control form-control-alternative" placeholder="A few words about you ..." disabled>{{ session['about'] }}</textarea>
                                 </div>
                             </div>
                         </form>
