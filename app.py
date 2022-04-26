@@ -11,6 +11,7 @@ from views.index import construct_index_bp
 from views.login import construct_login_bp
 from views.profile import construct_profile_bp
 from views.course import construct_course_bp
+from views.student import construct_student_bp
 #init models
 user = user_model(db_session, metadata)
 major = major_model(db_session, metadata)
@@ -32,6 +33,7 @@ index = construct_index_bp(user_control)
 login = construct_login_bp(user_control)
 profile = construct_profile_bp(user_control)
 course = construct_course_bp(user_control, course_control, course_content_control, course_enroll_control)
+student = construct_student_bp(user_control)
 
 app = Flask(__name__,static_url_path='', static_folder='views/static',template_folder='views/templates')
 app.secret_key = 'super secret key'
@@ -39,6 +41,7 @@ app.register_blueprint(index)
 app.register_blueprint(login)
 app.register_blueprint(profile)
 app.register_blueprint(course)
+app.register_blueprint(student)
 
 # @app.route('/')
 # def index():

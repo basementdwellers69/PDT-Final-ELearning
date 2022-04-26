@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends './base.html' %}
 
 {% block css %}
 
@@ -26,7 +26,7 @@ Students
                     <option value="">Coding and Big Data</option>
                 </select>
             </div>
-            
+
             <!--
             <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
@@ -41,12 +41,12 @@ Students
                 </ul>
             </div>
             -->
-            
+
         </div>
         <hr>
-        
+
         <div class="row student-table" style="padding: 10px 10px;">
-            {% if student %}
+            {% if stud %}
             <table class="table table-hover">
                 <thead>
                     <tr>
@@ -58,14 +58,14 @@ Students
                     </tr>
                 </thead>
                 <tbody>
-                    {% for ( id, firstname, lastname, email, major_name) in studentList %}
-                        <tr>
-                                <td class="id"> {{ id }} </td>
-                                <td class="name"><a href=" {{ url_for('profile')}} " style="text-decoration: none; color: black;">{{ firstname }} {{ lastname}}</a> </td>
-                                <td class="email">{{ email }}</td>
-                                <td class="major">{{ major_name }}</td>
-                                <td class="course">Psychology and Design Thinking</td>
-                        </tr>
+                    {% for ( id, status, firstname, lastname, email, major_name) in stud %}
+                    <tr>
+                        <td class="id"> {{ id }} </td>
+                        <td class="name"><a href=" {{ url_for('profile.profile')}} " style="text-decoration: none; color: black;">{{ firstname }} {{ lastname}}</a> </td>
+                        <td class="email">{{ email }}</td>
+                        <td class="major">{{ major_name }}</td>
+                        <td class="course">Psychology and Design Thinking</td>
+                    </tr>
                     {% endfor %}
                 </tbody>
             </table>
@@ -77,7 +77,7 @@ Students
 </div>
 
 <style>
-    .name:hover{
+    .name:hover {
         text-decoration: underline;
     }
 </style>
