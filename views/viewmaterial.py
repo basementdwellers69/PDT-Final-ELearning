@@ -8,5 +8,5 @@ def construct_viewmaterial_bp(controller):
     def viewmaterial():
         viewmaterial = controller.raw("SELECT * FROM 'course_content'").fetchall()
 
-        return render_template('viewmaterial/viewmaterial.html', stud=viewmaterialList)
+        return render_template('viewmaterial/viewmaterial.html', viewMat=viewmaterial)
     return viewmaterial_bp
