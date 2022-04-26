@@ -34,6 +34,7 @@ login = construct_login_bp(user_control)
 profile = construct_profile_bp(user_control)
 course = construct_course_bp(user_control, course_control, course_content_control, course_enroll_control)
 student = construct_student_bp(user_control)
+studentinput = construct_studentinput_bp(user_control)
 
 app = Flask(__name__,static_url_path='', static_folder='views/static',template_folder='views/templates')
 app.secret_key = 'super secret key'
@@ -42,6 +43,7 @@ app.register_blueprint(login)
 app.register_blueprint(profile)
 app.register_blueprint(course)
 app.register_blueprint(student)
+app.register_blueprint(studentinput)
 
 # @app.route('/')
 # def index():

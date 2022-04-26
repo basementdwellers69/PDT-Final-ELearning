@@ -34,4 +34,7 @@ def construct_studentinput_bp(controller):
                 input = controller.raw("INSERT INTO users (firstName, lastName, address, country, city, postalCode, username, email, password, status, majorId) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', %s, %s)")
                 
                 flash('You have successfully registered!')
+            return render_template('studentinput/studentinput.html')
+
+        return studentinput_bp
                 
