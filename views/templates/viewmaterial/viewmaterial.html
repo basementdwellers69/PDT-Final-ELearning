@@ -1,0 +1,60 @@
+{% extends './base.html' %}
+{% block css %}
+{% endblock %}
+
+{% block title %}
+Create Course Material
+{% endblock %}
+
+<form action="" method="POST">
+	<div class="container-fluid" style="width: 75%;background-color: white;, padding: 30px;">
+		<div class="row" style="background-color: white; margin-bottom: 20px; border-radius: 10px; padding: 20px 10px;">
+
+		</div>
+
+			<div class="form-group">
+
+				<label for="Id" class="form-control-label">Id</label>
+				<h5>{{ Id }}</h5>
+		    <div class="form-group">
+
+		    	<label for="courseId" class="form-control-label">Course ID</label>
+		    	{{courseId}}
+		    </div>
+
+		    <div class="form-group">
+
+		    	<label for="type" class="form-control-label">Type</label>
+		    	{{ type }}
+		    </div>
+
+		    <div class="form-group">
+		    	<label for="contentTitle" class="form-control-label">Content Title</label>
+		    	<h6>{{ contentTitle }}</h6>
+		    </div>
+
+		    <div class="form-group">
+		    	<label for="contentBody" class="form-control-label">Content Body</label>
+		    	<textarea rows="4" class="form-control form-control-alternative" placeholder="Insert course description..." disabled>{{ contentBody }}</textarea>
+		    </div>
+
+		    <div class="form-group">
+		    	<label for="create_time" class="form-control-label">Time</label>
+		    	<input type="text" name="create_time" id="create_time" class="form-control form-control-alternative" placeholder="Create Time" value="{{ create_time }}" disabled>
+		    </div>
+
+		    <div class="form-group">
+		    	<label for="status" class="form-control-label">Status</label>
+		    	<input type="text" name="status" id="status" class="form-control form-control-alternative" placeholder="Status" value="{{ status }}" disabled>
+		    </div>
+
+		    <div class="row">
+		    <div class="offset-2 col-6">
+		        <a href="/course/<int:id>"><button style="float: left;" type="button" class="btn btn-info">Back</button>
+		    </div>
+		    </div>
+			</div>
+</form>
+
+{% block content %}
+

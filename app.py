@@ -15,6 +15,7 @@ from views.student import construct_student_bp
 from views.studentinput import construct_studentinput_bp
 from views.creatematerial import construct_creatematerial_bp
 from views.inputcourse import construct_inputcourse_bp
+from views.viewmaterial import construct_viewmaterial_bp
 #init models
 user = user_model(db_session, metadata)
 major = major_model(db_session, metadata)
@@ -40,6 +41,7 @@ student = construct_student_bp(user_control)
 studentinput = construct_studentinput_bp(user_control)
 creatematerial = construct_creatematerial_bp(course_content_control)
 inputcourse = construct_inputcourse_bp(course_control)
+viewmaterial = construct_viewmaterial_bp(course_content_control)
 
 app = Flask(__name__,static_url_path='', static_folder='views/static',template_folder='views/templates')
 app.secret_key = 'super secret key'
@@ -51,6 +53,7 @@ app.register_blueprint(student)
 app.register_blueprint(studentinput)
 app.register_blueprint(creatematerial)
 app.register_blueprint(inputcourse)
+app.register_blueprint(viewmaterial)
 
 
 # @app.route('/')
