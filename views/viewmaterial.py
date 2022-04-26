@@ -4,7 +4,7 @@ import sys
 def construct_viewmaterial_bp(controller):
     viewmaterial_bp = Blueprint('viewmaterial', __name__,static_folder='static',template_folder='templates')
 
-    @viewmaterial_bp.route("course/<int:id>/viewmaterial")
+    @viewmaterial_bp.route("/course/<int:id>/viewmaterial")
     def viewmaterial():
         viewmaterial = controller.raw("SELECT * FROM 'course_content'").fetchall()
 
