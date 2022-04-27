@@ -14,9 +14,11 @@ Dashboard
     <div class="content-course" style="padding: 20px 10px;">
         <div class="row course-header" >
             <div class="col title h2">Course</div>
+            {% if session and session['user_status'] == 2 %}
             <div class="col create-course">
                 <a href="/inputcourse" class="btn btn-primary" style="float: right;">Add Course</a>
             </div>
+            {% endif %}
         </div>
         <hr>
         <!--COURSE CONTENT-->
@@ -72,7 +74,7 @@ Dashboard
             <div class="col noteboard-header h2" id="noteboard">
                 Noteboard
             </div>
-            {% if session and session['user_status'] == 2 %}
+            {% if session and session['user_status'] == 1 %}
             <div class="col">
                 <a href="{{ url_for('createnote.createnote') }}" class="btn btn-primary" style="text-decoration: none; float: right;">Add Note</a>
             </div>
