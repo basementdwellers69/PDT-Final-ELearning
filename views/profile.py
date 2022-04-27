@@ -17,6 +17,7 @@ def construct_profile_bp(controller):
         
         session['firstname'] = profile['firstName']
         session['lastname'] = profile['lastName']
+        session['stdusername'] = profile['username']
         session['email'] = profile['email']
         session['address'] = profile['address']
         session['city'] = profile['city']
