@@ -11,7 +11,7 @@ def construct_profile_bp(controller):
         # stmp = controller.get(query)
         # profile = stmp.fetchone()
 
-        profile = controller.raw("SELECT users.id, users.status, users.firstName, users.lastName, users.username, users.email, users.address, users.city, users.country, users.postalCode, users.aboutMe, majors.majorName FROM users LEFT JOIN majors ON majorId = majors.id ORDER BY users.id").fetchone()
+        profile = controller.raw("SELECT users.id, users.status, users.firstName, users.lastName, users.username, users.email, users.address, users.city, users.country, users.postalCode, users.aboutMe, majors.majorName FROM users LEFT JOIN majors ON majorId = majors.id WHERE users.id = %s ORDER BY users.id" % (user_id)).fetchone()
 
         print(profile, file=sys.stdout)
         
