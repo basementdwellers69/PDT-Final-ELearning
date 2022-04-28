@@ -6,7 +6,7 @@ def user_model(db_session, metadata):
     class User(object):
         query = db_session.query_property()
 
-        def __init__(self, status=0, firstName=" ", lastName=" ", email=" ", password=" ", majorId=0, address=None, city=None, country=None, postalCode=None, aboutMe=None):
+        def __init__(self, status=0, firstName=" ", lastName=" ", email=" ", password=" ", majorId=0, address=None, city=None, country=None, postalCode=None, aboutMe=None, courseId=0):
             self.status = status
             self.firstName = firstName
             self.lastName = lastName
@@ -20,6 +20,7 @@ def user_model(db_session, metadata):
             self.email = email
             self.password = password
             self.majorId = majorId
+            self.courseId = courseId
 
         def __repr__(self):
             return f'<User {self.status!r}>'
@@ -36,7 +37,8 @@ def user_model(db_session, metadata):
         Column('aboutMe', Text, unique=False),
         Column('email', String(120), unique=False, nullable=False),
         Column('password', String(30), unique=False, nullable=False),
-        Column('majorId', Integer, unique=False, nullable=False)
+        Column('majorId', Integer, unique=False, nullable=False),
+        Column('courseId', Integer, unique=False, nullable=False)
     )
     mapper(User, users)
     return users

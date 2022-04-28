@@ -55,13 +55,13 @@ Students
                     </tr>
                 </thead>
                 <tbody>
-                    {% for ( id, status, firstname, lastname, email, major_name) in stud %}
+                    {% for ( id, status, firstname, lastname, email, major_name, course_name) in stud %}
                     <tr>
                         <td class="id"> {{ id }} </td>
                         <td class="name"><a href=" {{ url_for('profile.profile')}} " style="text-decoration: none; color: black;">{{ firstname }} {{ lastname}}</a> </td>
                         <td class="email">{{ email }}</td>
                         <td class="major">{{ major_name }}</td>
-                        <td class="course">Psychology and Design Thinking</td>
+                        <td class="course">{{ course_name }}</td>
                     </tr>
                     {% endfor %}
                 </tbody>
