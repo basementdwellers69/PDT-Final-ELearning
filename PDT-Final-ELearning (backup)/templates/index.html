@@ -1,0 +1,79 @@
+{% extends 'base.html'%}
+
+{% block css %}
+<link rel="stylesheet" href="{{url_for('static', filename='index.css')}}">
+{% endblock %}
+
+{% block title %}
+Dashboard
+{% endblock %}
+
+{% block text %}
+Dashboard
+{% endblock %}
+
+{% block content %}
+            <!--CONTENT-->
+            <div class="container-fluid col-11 concor" style=" padding: 30px 0px; ">
+                <!--COURSE-->
+                <div class="content-course" style="padding: 20px 10px;">
+                    <div class="row course-header">
+                        <div class="col title h2">Course</div>
+                        {% if session and session.get('user_id') == 1 or session.get('user_id') == 2 %}
+                        <div class="col create-course">
+                            <a href="{{ url_for('addclass')}}" class="btn btn-primary" style="float: right;">Add Course</a>
+                        </div>
+                        {% endif %}
+                        
+                    </div>
+                    <hr>
+                    <!--COURSE CONTENT-->
+                    {% if courses %}
+                    <div class="course-content" style="max-height: 400px; border: 1px solid #ddd; display: flex; overflow-x: auto; padding: 30px;">
+                        {% for (courseId, courseName, lecturerId) in courses %}
+                        <a href="{{ url_for('course', courseId=courseId) }}">
+                            <div class="card" style="width: 400px; ">
+                                <img src="{{url_for('static', filename='images/cb1.png')}}" class="card-img-top" alt="..." style="height: 250px;">
+                                <div class="card-body">
+                                  <h5 class="card-text">{{ courseName }}</h5>
+                                </div>
+                            </div>
+                        </a>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    <h4>No Courses Found</h4>
+                    {% endif %}
+                </div>
+                
+                <!--NOTEBOARD-->
+                <div class="content-noteboard" style="padding: 20px 10px; margin: 20px 0;">
+                    <div class="row">
+                        <div class="col noteboard-header h2" id="noteboard">
+                            Noteboard
+                        </div>
+                        {% if session and session.get('user_id') == 1 %}
+                        <div class="col">
+                            <a href="{{ url_for('create') }}" class="btn btn-primary" style="text-decoration: none; float: right;">Add Note</a>
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <hr>
+                    <div class="noteboard-content" style="background-color: white;">
+                        {% if articles %}
+                        <ul class="list-group list-group-flush">
+                            {% for (article_id, title, body, user_id) in articles %}
+                            <li class="list-group-item">
+                                <a href="{{ body }}">{{ title }}</a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                        {% else %}
+                        <h5>No Contents</h5>
+                        {% endif %}
+                    </div>
+                </div>
+                <!--END NOTEBOARD-->
+            </div>
+{% endblock %}

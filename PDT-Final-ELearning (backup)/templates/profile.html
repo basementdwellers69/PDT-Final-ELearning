@@ -1,0 +1,198 @@
+{% extends 'base.html' %}
+
+{% block css %}
+<link rel="stylesheet" href="static/base.css">
+{% endblock%}
+
+{% block title %}
+Profile
+{% endblock %}
+
+{% block text %}
+Profile
+{% endblock %}
+
+{% block content %}
+{% if profile %}
+<form>
+    <div class="col-11 container-fluid mt--7 con-content" style="padding: 30px 0; border-radius: 10px;">
+        <div class="row container-fluid justify-content-center">
+            <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
+                <div class="card shadow row justify-content-center user-content" style="padding: 10px; border-radius: 10px;">
+                    <div class="card pic">
+                        <div class="pic row" style="border-radius: 50%; padding: 10px; justify-content: center;">
+                            <img src="{{url_for('static', filename='images/pp1.webp')}}" style="width: 250px; height: 200px; border-radius: 50%;">
+                        </div>
+                        <div class="card-body desc row" style="text-align: center; padding: 10px;">
+                            <h4>{{ session['username'] }} </h4>
+                            <span>{{ profile[9] }}</span>
+                        </div>
+                    </div>
+                    <hr>
+                    <p style="text-align: center;">{{ profile[8]}}</p>
+                </div>
+            </div>
+
+
+            <div class="col-xl-8 order-xl-2 mb-5 mb-xl-0">
+                <divv class="card shadow user-content" style="border-radius: 10px;">
+                    <div class="card-header" style="border-radius: 10px 10px 0 0;">
+                        <div class="row align-items-center">
+                            <div class="col-8">
+                                <h3 class="mb-0">My Account</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <h6 class="heading-small text-muted mb-4">User Information</h6>
+                            <div class="pl-lg-4">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group focused">
+                                            <label for="username" class="form-control-label">Username</label>
+                                            <input type="text" name="username" id="username" class="form-control form-control-alternative" placeholder="Username" value="{{ profile[0] }}" disabled>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label for="email" class="form-control-label">Email Address</label>
+                                            <input type="email" id="email" name="email" class="form-control form-control-alternative" placeholder="Email Address" value="{{ profile[1] }}" disabled>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group focused">
+                                            <label class="form-control-label" for="firstname">First name</label>
+                                            <input type="text" id="firstname" name="firstname" class="form-control form-control-alternative" placeholder="First name" value="{{ profile[2] }}" disabled>
+                                        </div> 
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group focused">
+                                          <label class="form-control-label" for="lastname">Last name</label>
+                                          <input type="text" id="lastname" name="lastname" class="form-control form-control-alternative" placeholder="Last name" value="{{ profile[3] }}" disabled>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr class="my-4">
+
+                            <!-- Address -->
+                            <h6 class="heading-small text-muted mb-4">Contact information</h6>
+                            <div class="pl-lg-4">
+                              <div class="row">
+                                <div class="col-md-12">
+                                  <div class="form-group focused">
+                                    <label class="form-control-label" for="address">Address</label>
+                                    <input id="address" name="address" class="form-control form-control-alternative" placeholder="Home Address" value="{{ profile[4] }}" type="text" disabled>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="row" style="margin-top: 10px;">
+                                <div class="col-lg-4">
+                                  <div class="form-group focused">
+                                    <label class="form-control-label" for="city">City</label>
+                                    <input type="text" id="city" name="city" class="form-control form-control-alternative" placeholder="City" value="{{ profile[5] }}" disabled>
+                                  </div>
+                                </div>
+                                <div class="col-lg-4">
+                                  <div class="form-group focused">
+                                    <label class="form-control-label" for="country">Country</label>
+                                    <input type="text" id="country" name="country" class="form-control form-control-alternative" placeholder="Country" value="{{ profile[6] }}" disabled>
+                                  </div>
+                                </div>
+                                <div class="col-lg-4">
+                                  <div class="form-group">
+                                    <label class="form-control-label" for="postalcode">Postal code</label>
+                                    <input type="number" id="postalcode" name="postalcode" class="form-control form-control-alternative" placeholder="Postal code" value="{{ profile[7] }}" disabled>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <hr class="my-4">
+
+                            <!-- Description -->
+                            <h6 class="heading-small text-muted mb-4">About me</h6>
+                            <div class="pl-lg-4">
+                              <div class="form-group focused">
+                                <label>About Me</label>
+                                <textarea rows="4" id="aboutme" name="aboutme" class="form-control form-control-alternative" placeholder="A few words about you ..." disabled>{{ profile[8] }}</textarea>
+                              </div>
+                            </div>
+                        </form>
+                    </div>
+                </divv>
+            </div>
+        </div> 
+    </div>
+</form>
+{% endif %}
+<style>
+  :root{
+    /* ===== Colors ===== */
+    --body-color: #E4E9F7;
+    --sidebar-color: #FFF;
+    --primary-color: #695CFE;
+    --primary-color-light: #F6F5FF;
+    --toggle-color: #DDD;
+    --text-color: #707070;
+
+    /* ====== Transition ====== */
+    --tran-03: all 0.2s ease;
+    --tran-03: all 0.3s ease;
+    --tran-04: all 0.3s ease;
+    --tran-05: all 0.3s ease;
+}
+
+body.dark{
+    --body-color: #18191a;
+    --sidebar-color: #242526;
+    --primary-color: #3a3b3c;
+    --primary-color-light: #3a3b3c;
+    --toggle-color: #fff;
+    --text-color: #ccc;
+}
+
+.home .con-content{
+  background-color: var(--sidebar-color);
+  color: var(--text-color);
+}
+.home .con-content .user-content{
+  border: none;
+}
+.home .con-content .card-header{
+  background-color: #fff;
+  
+}
+.home .con-content .user-content .pic{
+  border: none;
+}
+body.dark .home .con-content{
+  background-color: var(--sidebar-color);
+}
+body.dark .home .user-content{
+  background-color: var(--sidebar-color);
+  border: 2px solid #FFF;
+  border-radius: 10px;
+}
+body.dark .home .con-content .user-content .pic{
+  background-color: var(--sidebar-color);
+}
+body.dark .home .user-content input{
+  background-color: var(--sidebar-color);
+  border: 2px solid #FFF;
+  color: var(--text-color);
+}
+body.dark .home .user-content textarea{
+  background-color: var(--sidebar-color);
+  border: 2px solid #FFF;
+  color: var(--text-color);
+}
+body.dark .home .user-content .card-header{
+  background-color: var(--sidebar-color);
+  border-bottom: 1px solid var(--text-color);
+}
+
+</style>
+{% endblock %}

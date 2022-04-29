@@ -1,0 +1,152 @@
+{% extends 'base.html' %}
+
+{% block css%}
+<link rel="stylesheet" href="static/base.css">
+{% endblock %}
+
+{% block title %}
+Profile
+{% endblock %}
+
+{% block text %}
+Course Form
+{% endblock %}
+
+{% block content %}
+<form method="POST">
+    <div class="col-11 container-fluid mt--7 con-content" style="padding: 30px 0; border-radius: 10px;">
+        <div class="row container-fluid justify-content-center">
+            <div style="margin-left: 10px;">
+            
+                <div class="container-student">
+                    <div class="row">
+                        <h3>Course Form</h3>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="row">
+                            <div class="col-3">
+                                <label for="classname">Class Name</label>
+                            </div>
+                            <div class="col-8">
+                                <input type="text" id="classname" name="classname" class="form-control" placeholder="Class Name">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3">
+                                <label for="classroom">Classroom</label>
+                            </div>
+                            <div class="col-8">
+                                <input type="text" id="classroom" name="classroom" class="form-control" placeholder="Class Room">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3">
+                                <label for="classlink">Class Link</label>
+                            </div>
+                            <div class="col-8">
+                                <input type="text" id="classlink" name="classlink" class="form-control" placeholder="Class Link">
+                            </div>
+                        </div>
+                        
+                        <div class="col-11">
+                            <input type="submit" id="submit" name="reg-submit" value="Save" class="btn btn-primary">
+                        </div>
+                    </div>
+                    
+                </div>
+            
+            </div>
+            
+        </div>
+    </div>
+</form>
+<style>
+    :root {
+        /* ===== Colors ===== */
+        --body-color: #E4E9F7;
+        --sidebar-color: #FFF;
+        --primary-color: #695CFE;
+        --primary-color-light: #F6F5FF;
+        --toggle-color: #DDD;
+        --text-color: #707070;
+
+        /* ====== Transition ====== */
+        --tran-03: all 0.2s ease;
+        --tran-03: all 0.3s ease;
+        --tran-04: all 0.3s ease;
+        --tran-05: all 0.3s ease;
+    }
+
+    body.dark {
+        --body-color: #18191a;
+        --sidebar-color: #242526;
+        --primary-color: #3a3b3c;
+        --primary-color-light: #3a3b3c;
+        --toggle-color: #fff;
+        --text-color: #ccc;
+    }
+
+    .home .con-content {
+        background-color: var(--sidebar-color);
+        color: var(--text-color);
+    }
+
+    .home .con-content .user-content {
+        border: none;
+    }
+
+    .home .con-content .card-header {
+        background-color: #fff;
+
+    }
+
+    .home .con-content .user-content .pic {
+        border: none;
+    }
+
+    body.dark .home .con-content {
+        background-color: var(--sidebar-color);
+    }
+
+    body.dark .home .user-content {
+        background-color: var(--sidebar-color);
+        border: 2px solid #FFF;
+        border-radius: 10px;
+    }
+
+    body.dark .home .con-content .user-content .pic {
+        background-color: var(--sidebar-color);
+    }
+
+    body.dark .home .user-content input {
+        background-color: var(--sidebar-color);
+        border: 2px solid #FFF;
+    }
+
+    body.dark .home .user-content textarea {
+        background-color: var(--sidebar-color);
+        border: 2px solid #FFF;
+        color: var(--text-color);
+    }
+
+    body.dark .home .user-content .card-header {
+        background-color: var(--sidebar-color);
+        border-bottom: 1px solid var(--text-color);
+    }
+    .container-student .row{
+        padding: 10px;
+    }
+    div .header2 {
+        margin-top: 20px;
+        padding-top: 10px;
+    }
+    #reg-submit{
+        float: right;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        margin-right: 20px;
+    }
+
+</style>
+{% endblock %}

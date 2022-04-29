@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block css %}
+<link rel="stylesheet" href="{{url_for('static', filename='base.css')}}">
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid" style="padding: 20px;">
+    <form>
+        <div class="col-11 form-group" style="padding: 20px; justify-content: center; align-items: center; margin-left: 40px; background-color: white; border-radius: 10px;">
+            <h2 style="padding-bottom: 10px; border-bottom: 2px solid grey; margin-bottom: 20px;">Article</h2>
+            <div class="row mb-3" style="padding-top: 10px;">
+                <label for="title" class="col-2 col-form-label" style="font-weight: bold;">Title</label>
+                <div class="col-6">
+                    <input type="text" name="title" id="title" class="form-control" placeholder="Article Title" required/>
+                </div>
+            </div>
+            <div class="row mb-3" style="padding-top: 10px;">
+                <label for="body" class="col-2 col-form-label" style="font-weight: bold;">Link</label>
+                <div class="col-6">
+                    <input type="text" name="body" id="body" class="form-control" placeholder="Article Link" required/>
+                </div>
+            </div>
+            <div class="row mb-3" style="padding-top: 10px;">
+                <div class="offset-2 col-4" >
+                    <a class="btn btn-primary" href="{{ url_for('index') }}">Back</a>
+                </div>
+                <div class="col-6">
+                    <div class="row">
+                        <div class="offset-2 col-6">
+                            <button type="button" class="btn btn-success" name="btnCreate" id="btnCreate" onclick="createArticle()">Create</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<style>
+    .btn {
+        background-color: var(--primary-color);
+    }
+    .btn:hover{
+        background-color: #5344f9;
+    }
+</style>
+
+    <!----======== Javascript ======== -->
+    <script src="{{url_for('static', filename='script.js')}}"></script>
+    <script src="{{url_for('static', filename='create.js')}}"></script>
+{% endblock %}

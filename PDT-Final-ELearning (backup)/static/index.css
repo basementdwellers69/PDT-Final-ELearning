@@ -1,0 +1,19 @@
+.course-content a{
+    text-decoration: none;
+    color: black;
+}
+.course-content a:hover, 
+.course-content a:focus{
+    text-decoration: underline;
+}
+body.dark .home .course-content a:hover, 
+body.dark .home .course-content a:focus{
+    text-decoration: underline white;
+}
+.card {
+    min-width: 250px;
+    line-height: 250px;
+    text-align: center;
+    background-color: #ddd;
+    margin: 0 10px;
+}

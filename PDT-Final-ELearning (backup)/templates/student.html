@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block css %}
+<link rel="stylesheet" href="static/base.css">
+{% endblock %}
+
+{% block title %}
+Students
+{% endblock %}
+
+{% block text %}
+Students
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="container studentlist" style="border-radius: 10px;">
+        <div class="row student-header" style="padding-top: 20px; padding-bottom: 10px;">
+            <div class="col h4">Student Information</div>
+            {% if session and session.get('user_id') == 1 %}
+            <div class="col">
+                <a href="{{ url_for('newstudent' )}}" class="btn btn-success new-std" style="float: right;">New</a>
+            </div>
+            {% endif %}
+            <label for="dropdown">Class:</label>
+            <div class="col-11">
+                <select class="form-select mb-3">
+                    <option>All</option>
+                </select>
+            </div>  
+        </div>
+        <hr>
+        
+        <div class="row student-table" style="padding: 10px 10px;">
+            {% if student %}
+            
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Student Id</th>
+                        <th>Student Name</th>
+                        <th>Email Address</th>
+                        <th>Major</th>
+                        <th>Course Name</th>
+                        <th>#</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for ( student_id, firstname, lastname, email, major_name, course_name) in student %}
+                        <tr>
+                                <td class="id">{{ student_id }} </td>
+                                <td class="name">{{ firstname }} {{ lastname}}</td>
+                                <td class="email">{{ email }}</td>
+                                <td class="major">{{ major_name }}</td>
+                                <td class="course">{{ course_name }}</td>
+                                {% if session and session.get('user_id') == 1 %}
+                                <td class="opt">
+                                    <a href="{{ url_for('read', student_id=student_id)}}" class="btn btn-primary">Detail</a>
+                                    <a href="{{ url_for('edit', student_id=student_id)}}" class="btn btn-warning">Edit</a>
+                                    <a href="{{ url_for('delete', student_id=student_id)}}" class="btn btn-danger">Delete</a>
+                                </td>
+                                {% endif %}
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <h1>No Student Found</h1>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

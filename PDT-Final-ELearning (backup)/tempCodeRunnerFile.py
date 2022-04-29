@@ -1,0 +1,1 @@
+user_id = session.get('user_id')
