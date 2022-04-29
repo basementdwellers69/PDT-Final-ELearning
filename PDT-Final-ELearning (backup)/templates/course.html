@@ -17,54 +17,58 @@ Course
     {% if content %}
     <div class="row" style="background-color: white; margin-bottom: 20px; border-radius: 10px; padding: 20px 10px;">
         <div class="course-header-title" style="margin-bottom: 20px;">
-            <h3>{{ content[4]}}</h3>
+            <h3>{{ content[0]}}</h3>
         </div>
         <div class="course-header-body">
             <div class="row" style="padding: 5px;">
                 <span class="col-2">Room: </span>
                 <div class="col-6">
-                    <span>{{ content[5] }}</span>
+                    <span>{{ content[1] }}</span>
                 </div>
             </div>
             <div class="row" style="padding: 5px;">
                 <span class="col-2">Link: </span>
                 <div class="col-6">
-                    <a href="#">{{ content[6] }}</a>
+                    <a href="#">{{ content[2] }}</a>
                 </div>
             </div>
             <div class="row">
                 <a href="#">
                     <div class="teacher" style="padding: 5px; padding-right: 20px; float: right;">
-                        <span style="margin-right: 10px;">{{ content[8] }} {{ content[9] }}</span>
+                        <span style="margin-right: 10px;">{{ content[4] }} {{ content[5] }}</span>
                         <i class="bx bx-user icon" style="border: 2px solid grey; border-radius: 50%;" ></i>
                     </div>
-                </a>
-                
+                </a>  
             </div>
+            
         </div>
     </div>
-    <div class="row" style="background-color: white; border-radius: 10px; padding: 20px 10px;">
+    {% endif %}
+    {% if material %}
+    {% for (mat_id, mat_title, mat_link, mat_courseId) in material %}
+    <div class="row" style="background-color: white; border-radius: 10px; padding: 20px 10px; margin-bottom: 20px;">
         <div class="course-content">
             <div class="row">
                 <div class="col noteboard-header h4">
-                    Week 1
+                    Week {{ mat_id }}
                 </div>
                 {% if session and session.get('user_id') == 2 %}
                 <div class="col">
-                    <a href="{{ url_for('material')}}" style="float: right;" class="btn btn-secondary">Add material</a>
+                    <a href="{{ url_for('material', courseId=courseId)}}" style="float: right;" class="btn btn-secondary">Add material</a>
                 </div>
                 {% endif %}
             </div>
             <hr>
             <div class="noteboard-content" style="background-color: white;">
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><a href="{{ content[2] }}">{{ content[1] }}</a></li>
+                    <li class="list-group-item"><a href="{{ mat_link }}">{{ mat_title }}</a></li>
                 </ul>
             </div>
         </div>
     </div>
+    {% endfor %}
     {% else %}
-    <h4>No Content Found</h4>
+    <h3>No Content Found</h3>
     {% endif %}
 </div>
 <style>
