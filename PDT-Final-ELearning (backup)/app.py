@@ -19,15 +19,12 @@ def index():
         SELECT courses.id, courses.name, courses.lecturerId
         FROM courses
     """
-    
     cur.execute(sql2)
     print(sql2)
     courses = cur.fetchall()
     cur.close()
     conn.close()
-    return render_template('index.html', courses=courses)
 
-def index2():
     conn = db_connection()
     cur = conn.cursor()
     sql = """
@@ -40,7 +37,7 @@ def index2():
     articles = cur.fetchall()
     cur.close()
     conn.close()
-    return render_template('index.html', articles=articles)
+    return render_template('index.html', articles=articles, courses=courses)
 
 
 
@@ -304,18 +301,12 @@ def newstudent():
 
     return render_template('studentinput.html')
 
-@app.route('/assignment')
-def assignment():
-    return render_template('assignment.html')
-
 @app.route('/course/<int:courseId>')
 def course(courseId):
     conn = db_connection()
     cur = conn.cursor()
     sql = """
-        SELECT con.id, con.title, con.link, con.courseId, courses.name, courses.room, courses.classlink, users.id, users.firstname, users.lastname FROM course_content con
-        LEFT JOIN courses 
-        ON con.courseId = courses.id 
+        SELECT courses.name, courses.room, courses.classlink, users.id, users.firstname, users.lastname FROM courses
         LEFT JOIN users ON lecturerId = users.id
         WHERE courses.id = %s
     """ % (courseId)
@@ -325,10 +316,24 @@ def course(courseId):
     content = cur.fetchone()
     cur.close()
     conn.close()
-    return render_template ('course.html', content=content)
 
-@app.route('/course/addmaterial', methods=['GET', 'POST'])
-def material():
+    conn = db_connection()
+    cur = conn.cursor()
+    sql = """
+        SELECT con.id, con.title, con.link, con.courseId FROM course_content con
+        WHERE courseId = %s
+    """ % (courseId)
+    
+    cur.execute(sql)
+    print(sql)
+    material = cur.fetchall()
+    cur.close()
+    conn.close()
+
+    return render_template ('course.html', content=content, material=material)
+
+@app.route('/course/<int:courseId>/addmaterial', methods=['GET', 'POST'])
+def material(courseId):
     if not session:
         return redirect(url_for('login'))
 
@@ -343,8 +348,8 @@ def material():
         courselink = courselink.strip()
 
         sql= """
-            INSERT INTO course_content (title, link) 
-            VALUES ('%s', '%s') """ % (coursetitle, courselink)
+            INSERT INTO course_content (title, link, courseId) 
+            VALUES ('%s', '%s', %s) """ % (coursetitle, courselink, courseId)
 
         cur.execute(sql)
         conn.commit()
