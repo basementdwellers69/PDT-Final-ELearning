@@ -222,8 +222,7 @@ def edit(student_id):
 
         cur.close()
         conn.close()
-        # use redirect to go to certain url. url_for function accepts the
-        # function name of the URL which is function index() in this case
+
         return redirect(url_for('students'))
 
     # find the record first
@@ -250,7 +249,7 @@ def delete(student_id):
     cur.close()
     conn.commit()
     conn.close()
-    return render_template('students')
+    return render_template('student.html')
 
 @app.route('/newstudent', methods=['GET', 'POST'])
 def newstudent():
